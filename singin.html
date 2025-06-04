@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="project.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: -1;
+            background: linear-gradient(120deg, #ff6a00, #ee0979, #00c3ff, #43e97b, #38f9d7, #ff6a00);
+            background-size: 200% 200%;
+            animation: gradientMove 8s ease-in-out infinite;
+            opacity: 0.7;
+        }
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .auth-form {
+            background-color: white;
+            padding: 40px; 
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 500px; 
+        }
+        .auth-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .auth-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .auth-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .auth-form button:hover {
+            background-color: #555;
+        }
+        .auth-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sign Up</h1>
+    </header>
+    <main>
+        <form id="signup-form" class="auth-form" onsubmit="ok(); return false;">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            
+            <label for="password">Password:</label>
+            <div style="position: relative; display: flex; align-items: center;">
+                <input type="password" id="password" name="password" placeholder="Enter your password" required style="padding-right: 50px; width: 100%; box-sizing: border-box;">
+            </div>
+            <label for="conform password">conform password :</label>
+            <div style="position: relative; display: flex; align-items: center;">
+                <input type="password" id="conform password" name="conform password" placeholder="Enter your conform password" required style="padding-right: 50px; width: 100%; box-sizing: border-box;">
+            </div>
+            
+            <button type="submit">Sign Up</button>
+        </form>
+    </main>
+    <script src=".vscode/pro.js"></script>
+</body>
+</html>
+
+
