@@ -1,0 +1,467 @@
+u<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invest.AI - AI-Powered Investment Solutions</title>
+    <link rel="stylesheet" href="project.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+            position: relative;
+        }
+
+        header {
+            background: #333;
+            color: white;
+            padding: 1em;
+            font-size: 1.5em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title {
+            margin-left: 20px;
+        }
+
+        .auth-container {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .btn {
+            padding: 8px 15px;
+            background: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-left: 10px;
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+        }
+
+        .menu-container {
+            position: relative;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .dots {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            background-color: white;
+            border-radius: 50%;
+            margin: 2px;
+        }
+
+        .menu {
+            position: absolute;
+            right: 0;
+            top: 25px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            width: 150px;
+            display: none;
+            z-index: 1000;
+        }
+
+        .menu a {
+            display: block;
+            padding: 10px;
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .menu a:hover {
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .stock-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .stock-graph {
+            width: 400px;
+            height: 300px;
+        }
+
+        .video-container {
+            margin-top: 30px;
+        }
+
+        .video-container h3 {
+            margin-bottom: 10px;
+        }
+
+        .chatbox-container {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 300px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            z-index: 1000;
+            display: none;
+        }
+
+        .chat-header {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        .chat-body {
+            height: 250px;
+            overflow-y: auto;
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        .chat-footer {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .send-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            margin-left: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .send-btn:hover {
+            background-color: #218838;
+        }
+
+        /* Chat Icon Button */
+        .chat-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007BFF;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+        }
+
+        .chat-icon i {
+            font-size: 24px;
+        }
+        
+        /* Search Bar Styles */
+        .search-container {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+            position: relative;
+        }
+
+        .search-bar {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            width: 200px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .search-btn i {
+            font-size: 16px;
+        }
+
+        .auth-container {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .btn {
+            padding: 8px 15px;
+            background: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-left: 10px;
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+        }
+    .logo {
+        width: 40px;
+        height: auto;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+    .header-title {
+        display: flex;
+        align-items: center;
+    }
+    .trading-options {
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    .option-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 10px;
+    }
+
+    .option-btn {
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background-color 0.3s;
+    }
+
+    .option-btn:hover {
+        background-color: #0056b3;
+    }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-title">
+            <img src="C:\Users\91829\Documents\WhatsApp Image 2025-03-26 at 20.24.33_b70b4a9e.jpg" alt="Invest.AI Logo" class="logo"> 
+            Invest.AI - Smart Investing with AI
+        </div>
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-bar" placeholder="Search...">
+            <button class="search-btn" onclick="searchFunction()">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        <div class="auth-container">
+            <a href="#" class="btn">Login</a>
+            <a href="#" class="btn">Signup</a>
+            <div class="menu-container">
+                <div class="dots" onclick="toggleMenu()">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <div id="menu" class="menu">
+                    <a href="#"><i class="fas fa-user"></i> Profile</a>
+                    <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                    <a href="#"><i class="fas fa-book-open"></i> Tutorials</a>
+                    <a href="#"><i class="fas fa-highlighter"></i> News Summarization</a>
+                    <a href="#"><i class="fas fa-user-friends"></i> Invite Friends</a>
+                    <a href="#"><i class="fas fa-gem"></i> Premium</a>
+                    <a href="#"><i class="fas fa-gift"></i> Rewards</a>
+                    <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    
+    <!-- Main Container -->
+    <div class="container">
+        <h2>Welcome to Invest.AI</h2>
+        <p>Leverage artificial intelligence to optimize your investment strategy.</p>
+
+        <!-- Stock Graph Container -->
+        <div class="stock-container">
+            <canvas id="stockChart" class="stock-graph"></canvas>
+        </div>
+
+        <!-- Trading Options Section -->
+<div class="trading-options">
+    <h3>Select Your Investment Option</h3>
+    <div class="option-container">
+        <button class="option-btn">🇮🇳 Indian Trading</button>
+        <button class="option-btn">🌍 Foreign Trading</button>
+        <button class="option-btn">💎 Cryptocurrency Trading</button>
+    </div>
+</div>
+
+
+        <!-- Video Section -->
+        <div class="video-container">
+            <h3>🎥 How to Use Invest.AI</h3>
+            <video width="600" controls>
+                <source src="C:\Users\91829\Videos\scam 1992\Scam.1992.S01E01.[@TVseriesLand]720p.Tam.Tel.Hin.Mal.mkv" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <!-- AI Chatbox -->
+    <div class="chatbox-container" id="chatbox">
+        <div class="chat-header">🤖 AI Chatbox</div>
+        <div class="chat-body" id="chatBody">
+            <div class="bot-message">Hello! How can I assist you today? 😊</div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chatInput" class="chat-input" placeholder="Type your message..." />
+            <button onclick="sendMessage()" class="send-btn">Send</button>
+        </div>
+    </div>
+
+    <!-- Chat Icon Button -->
+    <div class="chat-icon" onclick="toggleChatbox()">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+
+    <script>
+        // Toggle Menu
+        function toggleMenu() {
+            var menu = document.getElementById("menu");
+            menu.style.display = (menu.style.display === "block") ? "none" : "block";
+        }
+
+        // Toggle Chatbox
+        function toggleChatbox() {
+            var chatbox = document.getElementById("chatbox");
+            chatbox.style.display = (chatbox.style.display === "block") ? "none" : "block";
+        }
+
+        // Send Message
+        function sendMessage() {
+            var chatBody = document.getElementById("chatBody");
+            var chatInput = document.getElementById("chatInput");
+            var userMessage = chatInput.value.trim();
+
+            if (userMessage !== "") {
+OAOAOA                // Add user message
+OA                chatBody.innerHTML += `<div class="user-message">${userMessage}</div>`;
+OA                chatInput.value = "";
+OAOAOAOAOA
+OAOA                // Simulate AI bot response
+OA                setTimeout(function () {
+                    var botReply = getBotReply(userMessage);
+OA                    chatBody.innerHTML += `<div class="bot-message">${botReply}</div>`;
+OAOAOAOAOAOA                    chatBody.scrollTop = chatBody.scrollHeight;
+OAOAOA                }, 500);
+OAOAOAOAOA            }
+OA        }
+
+        // AI Response Logic
+        function getBotReply(message) {
+            var lowerCaseMsg = message.toLowerCase();
+OA            if (lowerCaseMsg.includes("hello") || lowerCaseMsg.includes("hi")) {
+OAOA                return "Hello, How can I help you with your investments today? 💸";
+            } else if (lowerCaseMsg.includes("stock")) {
+OA                return "I can provide stock trends and predictions for you! 📈";
+OA            } else if (lowerCaseMsg.includes("bye")) {
+                return "Goodbye, Thank you !! Have a great day! ";
+            } else {
+OAOAOAOA                return "I'm here to assist with anything related to AI and investments! 💡";
+            }
+        }
+
+        // Stock Graph Data
+        var ctx = document.getElementById('stockChart').getContext('2d');
+        var stockChart = new Chart(ctx, {
+OA            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                datasets: [{
+                    label: 'Stock Performance',
+                    data: [120, 135, 125, 140, 150, 165, 180],
+                    borderColor: '#28a745',
+                    borderWidth: 2,
+                    fill: false,
+                    pointBackgroundColor: '#28a745'
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Month'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Stock Price (USD)'
+                        },
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
+
+
